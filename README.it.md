@@ -24,6 +24,14 @@ A disegnare i wallpaper è l'ottimo motore open source
 [linux-wallpaperengine](https://github.com/Almamu/linux-wallpaperengine).
 wp-penguin è l'interfaccia comoda che ci sta intorno.
 
+<p align="center">
+  <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4">
+    <img src="docs/media/wp-penguin-demo.webp" alt="wp-penguin — video di presentazione" width="100%">
+  </a>
+  <br>
+  <sub>▶ <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4"><b>Guarda il video completo in HD</b></a> (MP4, 35 s) · i wallpaper mostrati sono grafiche dimostrative originali</sub>
+</p>
+
 > [!NOTE]
 > wp-penguin è un progetto **non ufficiale** della comunità. Non è affiliato,
 > approvato né sponsorizzato da Wallpaper Engine, dai suoi sviluppatori o da
@@ -315,7 +323,7 @@ la sua licenza in un'intestazione SPDX.
 | Parte | Licenza |
 |---|---|
 | Codice sorgente (`wp_penguin/`, `wp-penguin`, `install.sh`, `style.css`) | [GPL-3.0-or-later](LICENSES/GPL-3.0-or-later.txt) |
-| Grafica (icona, logo, banner in `data/`) | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
+| Grafica (icona, logo, banner in `data/`) e video dimostrativo (`docs/media/`) | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
 
 Copyright © 2026 contributori di wp-penguin.
 

@@ -24,6 +24,14 @@ The actual rendering is done by the excellent open-source engine
 [linux-wallpaperengine](https://github.com/Almamu/linux-wallpaperengine).
 wp-penguin is the friendly frontend around it.
 
+<p align="center">
+  <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4">
+    <img src="docs/media/wp-penguin-demo.webp" alt="wp-penguin — product video" width="100%">
+  </a>
+  <br>
+  <sub>▶ <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4"><b>Watch the full video in HD</b></a> (MP4, 35 s) · the wallpapers shown are original demo artwork</sub>
+</p>
+
 > [!NOTE]
 > wp-penguin is an **unofficial**, community project. It is not affiliated with,
 > endorsed by, or sponsored by Wallpaper Engine, its developers, or Valve.
@@ -313,7 +321,7 @@ declares its license in an SPDX header.
 | Part | License |
 |---|---|
 | Source code (`wp_penguin/`, `wp-penguin`, `install.sh`, `style.css`) | [GPL-3.0-or-later](LICENSES/GPL-3.0-or-later.txt) |
-| Artwork (`data/` icon, logo, banner) | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
+| Artwork (`data/` icon, logo, banner) and the demo video (`docs/media/`) | [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt) |
 
 Copyright © 2026 wp-penguin contributors.
 
