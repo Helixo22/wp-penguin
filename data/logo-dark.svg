@@ -1,0 +1,80 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 300" width="1240" height="300">
+  <!-- Logo di wp-penguin: icona incorporata + nome (sfondi scuri) -->
+  <svg x="0" y="0" width="300" height="300" viewBox="0 0 1024 1024"><defs>
+    <linearGradient id="ic-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#25306B"/>
+      <stop offset="1" stop-color="#0B1026"/>
+    </linearGradient>
+    <linearGradient id="ic-gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.14"/>
+      <stop offset="0.45" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ic-rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="ic-screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="0.5" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <radialGradient id="ic-moon" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E0E7FF"/>
+    </radialGradient>
+    <linearGradient id="ic-stand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9D1EA"/>
+      <stop offset="1" stop-color="#8E99BF"/>
+    </linearGradient>
+    <clipPath id="ic-screen-clip">
+      <rect x="176" y="208" width="672" height="448" rx="44"/>
+    </clipPath>
+    <filter id="ic-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  
+  <rect x="64" y="64" width="896" height="896" rx="208" fill="url(#ic-bg)"/>
+  <rect x="64" y="64" width="896" height="896" rx="208" fill="url(#ic-gloss)"/>
+  <rect x="66" y="66" width="892" height="892" rx="206" fill="none" stroke="url(#ic-rim)" stroke-width="4"/>
+
+  <g transform="translate(0 36)">
+    
+    <path d="M462 650 H562 L578 718 H446 Z" fill="url(#ic-stand)"/>
+    <rect x="384" y="712" width="256" height="30" rx="15" fill="url(#ic-stand)"/>
+
+    
+    <g filter="url(#ic-shadow)">
+      <rect x="176" y="208" width="672" height="448" rx="44" fill="url(#ic-screen)"/>
+    </g>
+    <g clip-path="url(#ic-screen-clip)">
+      <circle cx="690" cy="322" r="58" fill="url(#ic-moon)" opacity="0.95"/>
+      <circle cx="690" cy="322" r="96" fill="#FFFFFF" opacity="0.10"/>
+      
+      <path d="M176 520 C300 452 420 588 560 522 S780 452 848 500 V656 H176 Z"
+            fill="#FFFFFF" opacity="0.24"/>
+      
+      <g transform="translate(372 562) scale(1.2) translate(-360 -562)">
+      <path d="M360 302 C408 302 430 350 427 410 C424 468 438 518 420 560 H300
+               C282 518 296 468 293 410 C290 350 312 302 360 302 Z" fill="#0B1026"/>
+      <path d="M294 424 C268 462 270 502 286 524 C296 494 302 462 300 432 Z" fill="#0B1026"/>
+      <path d="M360 362 C390 362 400 400 398 440 C396 488 408 524 394 556 H326
+               C312 524 324 488 322 440 C320 400 330 362 360 362 Z" fill="#F4F6FF"/>
+      <circle cx="380" cy="336" r="9" fill="#FFFFFF"/>
+      <circle cx="383" cy="336" r="4.5" fill="#0B1026"/>
+      <path d="M404 340 L444 352 L404 364 Z" fill="#FF9F0A"/>
+      <ellipse cx="338" cy="562" rx="22" ry="8" fill="#FF9F0A"/>
+      <ellipse cx="384" cy="562" rx="22" ry="8" fill="#FF9F0A"/>
+      </g>
+      
+      <path d="M176 584 C320 524 440 644 600 584 S790 542 848 572 V656 H176 Z"
+            fill="#0B1026" opacity="0.32"/>
+    </g>
+    
+    <rect x="176" y="208" width="672" height="448" rx="44" fill="none"
+          stroke="#FFFFFF" stroke-opacity="0.30" stroke-width="6"/>
+  </g></svg>
+  <text x="320" y="190" font-family="Inter, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="132" font-weight="800" letter-spacing="-4" fill="#0A84FF">wp<tspan fill="#8E8E93" font-weight="600">-</tspan><tspan fill="#F5F5F7">penguin</tspan></text>
+</svg>

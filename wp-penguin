@@ -1,0 +1,7 @@
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 wp-penguin contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Launcher: funziona anche tramite symlink in ~/.local/bin
+DIR="$(dirname "$(readlink -f "$0")")"
+export PYTHONPATH="$DIR${PYTHONPATH:+:$PYTHONPATH}"
+exec python3 -m wp_penguin "$@"

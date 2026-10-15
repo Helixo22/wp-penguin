@@ -1,0 +1,409 @@
+/* SPDX-FileCopyrightText: 2026 wp-penguin contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later */
+/*
+ * wp-penguin — stile dell'interfaccia (GTK4 CSS)
+ *
+ * Tutto l'aspetto grafico vive qui. Per personalizzarlo senza toccare il
+ * repository copia questo file in ~/.config/wp-penguin/style.css: viene
+ * caricato DOPO questo e ricaricato automaticamente a ogni salvataggio.
+ *
+ * Tema chiaro/scuro: la palette è fatta di variabili su :root; il blocco
+ * @media (prefers-color-scheme: dark) le ridefinisce. GTK risolve la media
+ * query in base al tema di sistema (portale XDG) oppure alla scelta fatta in
+ * Impostazioni → Aspetto.
+ *
+ * Vetro smerigliato: gli sfondi delle finestre sono semitrasparenti; la sfocatura
+ * vera la fa Hyprland (decoration:blur:enabled = true).
+ */
+
+/* ------------------------------------------------------------- palette */
+
+:root {
+  /* Colori pieni di finestra e sidebar: la trasparenza la applica l'app
+     (Impostazioni → Aspetto → Trasparenza) con alpha(). --window-bg e
+     --sidebar-bg sono i valori usati se l'override non c'è. */
+  --window-solid: rgb(246, 246, 248);
+  --sidebar-solid: rgb(232, 232, 237);
+  --window-bg: rgba(246, 246, 248, 0.84);
+  --sidebar-bg: rgba(232, 232, 237, 0.55);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --fill: rgba(120, 120, 128, 0.16);
+  --fill-strong: rgba(120, 120, 128, 0.28);
+  --text: #1d1d1f;
+  --text-secondary: rgba(60, 60, 67, 0.62);
+  --separator: rgba(60, 60, 67, 0.12);
+  --accent: #007aff;
+  --accent-soft: rgba(0, 122, 255, 0.14);
+  --green: #34c759;
+  --orange: #ff9500;
+  --red: #ff3b30;
+  --knob: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.10);
+  --shadow-color-strong: rgba(0, 0, 0, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --window-solid: rgb(28, 28, 30);
+    --sidebar-solid: rgb(44, 44, 46);
+    --window-bg: rgba(28, 28, 30, 0.80);
+    --sidebar-bg: rgba(44, 44, 46, 0.50);
+    --surface: rgba(58, 58, 60, 0.55);
+    --surface-hover: rgba(72, 72, 74, 0.75);
+    --fill: rgba(120, 120, 128, 0.24);
+    --fill-strong: rgba(120, 120, 128, 0.40);
+    --text: #f5f5f7;
+    --text-secondary: rgba(235, 235, 245, 0.60);
+    --separator: rgba(255, 255, 255, 0.09);
+    --accent: #0a84ff;
+    --accent-soft: rgba(10, 132, 255, 0.22);
+    --green: #30d158;
+    --orange: #ff9f0a;
+    --red: #ff453a;
+    --knob: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.35);
+    --shadow-color-strong: rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ---------------------------------------------------------- base/finestra */
+
+window.wpp {
+  /* Prima scelta SF Pro, poi Inter, poi il sans-serif di sistema */
+  font-family: "SF Pro Text", "SF Pro Display", "Inter", "Inter Variable", "Cantarell", sans-serif;
+  font-size: 10.5pt;
+  color: var(--text);
+  background: var(--window-bg);
+  border-radius: 14px;
+}
+
+/* Il tema GTK di sistema imposta il colore di list/row/label: lo riallineiamo
+   alla nostra palette, altrimenti con temi scuri forzati il testo sparisce */
+window.wpp list, window.wpp row, window.wpp entry, window.wpp spinbutton,
+window.wpp dropdown, window.wpp .row-title, window.wpp .card-title { color: var(--text); }
+
+window.wpp .dim, window.wpp .caption-text { color: var(--text-secondary); }
+window.wpp .caption-text { font-size: 0.86em; }
+window.wpp .mono { font-family: "SF Mono", "JetBrains Mono", "Fira Code", monospace; font-size: 0.92em; }
+
+window.wpp scrolledwindow, window.wpp viewport, window.wpp flowbox,
+window.wpp stack, window.wpp list.plain { background: transparent; }
+
+window.wpp scrollbar { background: transparent; border: none; }
+window.wpp scrollbar slider { background: var(--fill-strong); border-radius: 999px; min-width: 6px; min-height: 6px; }
+
+/* ------------------------------------------------------------- sidebar */
+
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--separator);
+  padding: 22px 12px 14px 12px;
+  border-radius: 14px 0 0 14px;
+}
+
+/* Logo in alto: stessi colori di data/logo.svg */
+.sidebar-logo label { font-size: 1.3em; font-weight: 800; letter-spacing: -0.4px; }
+.sidebar-logo .logo-wp { color: var(--accent); }
+.sidebar-logo .logo-dash { color: var(--text-secondary); font-weight: 600; }
+.sidebar-logo .logo-name { color: var(--text); }
+
+.sidebar list { background: transparent; }
+
+.sidebar row {
+  border-radius: 9px;
+  padding: 8px 10px;
+  margin: 1px 0;
+  transition: background 180ms ease;
+}
+.sidebar row:hover { background: var(--fill); }
+.sidebar row:selected {
+  background: var(--accent);
+  color: white;
+}
+.sidebar row:selected image { color: white; }
+.sidebar row image { color: var(--accent); }
+.count-badge {
+  font-size: 0.75em; font-weight: 700; min-width: 18px;
+  padding: 1px 7px; border-radius: 999px;
+  background: var(--accent); color: white;
+}
+.sidebar row:selected .count-badge { background: white; color: var(--accent); }
+
+.sidebar .now-playing {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+.status-dot { min-width: 8px; min-height: 8px; border-radius: 999px; background: var(--text-secondary); }
+.status-dot.on { background: var(--green); }
+.status-dot.paused { background: var(--orange); }
+
+/* ----------------------------------------------------------- intestazioni */
+
+.page { padding: 26px 30px 0 30px; }
+.page-title { font-size: 2.0em; font-weight: 800; letter-spacing: -0.5px; }
+.page-subtitle { color: var(--text-secondary); margin-top: 2px; }
+.section-title {
+  font-size: 0.82em; font-weight: 600; color: var(--text-secondary);
+  margin: 22px 14px 6px 14px;
+}
+.section-footer { font-size: 0.82em; color: var(--text-secondary); margin: 6px 14px 0 14px; }
+
+/* ----------------------------------------------------- controlli comuni */
+
+window.wpp entry, window.wpp spinbutton, window.wpp dropdown > button {
+  border-radius: 10px;
+  background: var(--fill);
+  border: none;
+  box-shadow: none;
+  min-height: 32px;
+  transition: background 150ms ease, box-shadow 150ms ease;
+}
+window.wpp entry:focus-within, window.wpp spinbutton:focus-within {
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+window.wpp spinbutton button { border-radius: 8px; background: transparent; border: none; }
+
+window.wpp button {
+  border-radius: 10px;
+  transition: background 150ms ease, transform 120ms ease, box-shadow 150ms ease;
+}
+window.wpp button.flat:hover { background: var(--fill); }
+
+window.wpp button.pill {
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-weight: 600;
+  border: none;
+  background: var(--fill);
+  color: var(--text);
+  box-shadow: none;
+}
+window.wpp button.pill:hover { background: var(--fill-strong); }
+window.wpp button.pill:active { transform: scale(0.97); }
+window.wpp button.pill.accent { background: var(--accent); color: white; box-shadow: 0 4px 14px var(--accent-soft); }
+window.wpp button.pill.accent:hover { background: color-mix(in srgb, var(--accent) 88%, white); }
+window.wpp button.pill.danger { color: var(--red); }
+window.wpp button.pill:disabled { opacity: 0.45; }
+
+/* Controllo segmentato (stile UISegmentedControl) */
+.segmented {
+  background: var(--fill);
+  border-radius: 9px;
+  padding: 2px;
+}
+.segmented button {
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 3px 12px;
+  min-height: 24px;
+  font-weight: 500;
+}
+.segmented button:checked {
+  background: var(--surface-hover);
+  box-shadow: 0 1px 4px var(--shadow-color-strong);
+}
+
+/* Interruttori iOS */
+window.wpp switch {
+  border-radius: 999px;
+  padding: 2px;
+  border: none;
+  background: var(--fill-strong);
+  box-shadow: none;
+  transition: background 220ms ease;
+}
+window.wpp switch:checked { background: var(--green); }
+window.wpp switch slider {
+  min-width: 26px;
+  min-height: 26px;
+  margin: 0;
+  border-radius: 999px;
+  border: none;
+  background: var(--knob);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18), 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+window.wpp switch image { opacity: 0; }
+
+/* Slider moderni */
+window.wpp scale { padding: 10px 6px; }
+window.wpp scale trough {
+  min-height: 4px;
+  border-radius: 999px;
+  background: var(--fill-strong);
+  border: none;
+}
+window.wpp scale highlight { border-radius: 999px; background: var(--accent); border: none; }
+window.wpp scale slider {
+  min-width: 22px;
+  min-height: 22px;
+  margin: -9px;
+  border-radius: 999px;
+  border: none;
+  background: var(--knob);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(0, 0, 0, 0.08);
+  transition: transform 120ms ease;
+}
+window.wpp scale slider:active { transform: scale(1.12); }
+window.wpp scale value { color: var(--text-secondary); font-feature-settings: "tnum"; }
+
+/* Popover dei menu a tendina */
+window.wpp popover > contents { border-radius: 12px; box-shadow: 0 12px 32px var(--shadow-color-strong); }
+
+/* ------------------------------------------- gruppi stile Impostazioni iOS */
+
+list.group {
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: 0 1px 3px var(--shadow-color), 0 8px 24px var(--shadow-color);
+}
+list.group > row {
+  padding: 11px 16px;
+  min-height: 30px;
+  border-color: var(--separator);
+  transition: background 150ms ease;
+}
+list.group > row:first-child { border-radius: 14px 14px 0 0; }
+list.group > row:last-child  { border-radius: 0 0 14px 14px; }
+list.group > row:only-child  { border-radius: 14px; }
+list.group > row.activatable:hover { background: var(--fill); }
+list.group > row:selected { background: transparent; }
+.row-title { font-weight: 500; }
+.row-subtitle { color: var(--text-secondary); font-size: 0.88em; }
+.row-icon {
+  min-width: 30px; min-height: 30px; border-radius: 8px;
+  background: var(--accent); color: white;
+}
+.row-icon.green { background: var(--green); }
+.row-icon.orange { background: var(--orange); }
+.row-icon.gray { background: #8e8e93; }
+
+/* ------------------------------------------------------ griglia wallpaper */
+
+flowbox.wall-grid { padding: 6px 22px 28px 22px; }
+
+flowboxchild.card {
+  padding: 8px;
+  border-radius: 18px;
+  background: transparent;
+  outline: none;
+  transition: background 200ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+flowboxchild.card:hover { transform: translateY(-3px); }
+flowboxchild.card:selected { background: var(--accent-soft); }
+
+.card .thumb {
+  border-radius: 14px;
+  background: var(--fill);
+  box-shadow: 0 2px 6px var(--shadow-color), 0 12px 28px var(--shadow-color);
+  transition: box-shadow 220ms ease;
+}
+.card:hover .thumb { box-shadow: 0 4px 10px var(--shadow-color), 0 18px 38px var(--shadow-color-strong); }
+
+/* Dissolvenza in entrata delle anteprime */
+.card picture { opacity: 0; transition: opacity 380ms ease; border-radius: 14px; }
+.card picture.loaded { opacity: 1; }
+
+.card-title { font-weight: 600; margin-top: 8px; }
+.card-subtitle { color: var(--text-secondary); font-size: 0.85em; }
+
+.badge {
+  font-size: 0.68em; font-weight: 700; letter-spacing: 0.4px;
+  padding: 2px 8px; border-radius: 999px; margin: 10px;
+  color: white; background: rgba(0, 0, 0, 0.45);
+}
+.badge.active { background: var(--green); }
+.badge.broken { background: var(--red); }
+.badge.new { background: var(--accent); margin-left: 0; }
+
+/* ----------------------------------------------------------- inspector */
+
+/* Pannello flottante a destra, sopra la griglia: opaco (con la trasparenza
+   non si capirebbe cosa è pannello e cosa è griglia) e con un'ombra netta */
+.inspector {
+  background: var(--window-solid);
+  border-left: 1px solid var(--separator);
+  padding: 22px 20px;
+  box-shadow: -16px 0 40px rgba(0, 0, 0, 0.45);
+}
+.inspector .hero {
+  border-radius: 14px;
+  box-shadow: 0 10px 30px var(--shadow-color-strong);
+}
+.inspector-title { font-size: 1.35em; font-weight: 700; }
+
+/* -------------------------------------------------------- pagina monitor */
+
+.monitor-card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 1px 3px var(--shadow-color), 0 10px 28px var(--shadow-color);
+}
+.monitor-card .screen {
+  border-radius: 10px;
+  border: 4px solid #1c1c1e;
+  background: #000;
+}
+.monitor-name { font-size: 1.2em; font-weight: 700; }
+
+/* ------------------------------------------------------------ workshop */
+
+.info-strip {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+.info-strip image { color: var(--accent); }
+
+.webframe {
+  margin: 12px 30px 26px 30px;
+  border-radius: 16px;
+  background: #1b2838;  /* colore di Steam Community mentre carica */
+  box-shadow: 0 2px 8px var(--shadow-color), 0 16px 40px var(--shadow-color-strong);
+}
+
+progressbar.web-progress trough { min-height: 3px; border-radius: 999px; background: transparent; }
+progressbar.web-progress progress { min-height: 3px; border-radius: 999px; background: var(--accent); }
+progressbar.web-progress { transition: opacity 300ms ease; }
+
+/* --------------------------------------------------------------- toast */
+
+.toast {
+  background: rgba(30, 30, 32, 0.92);
+  color: white;
+  border-radius: 999px;
+  padding: 10px 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------------------------------------------------- wizard */
+
+window.wizard .wizard-page { padding: 34px 52px 12px 52px; }
+window.wizard .hero-icon { color: var(--accent); }
+window.wizard .wizard-title { font-size: 2.1em; font-weight: 800; letter-spacing: -0.6px; }
+window.wizard .wizard-text { color: var(--text-secondary); font-size: 1.05em; }
+window.wizard .wizard-footer { padding: 16px 24px 22px 24px; border-top: 1px solid var(--separator); }
+
+.dots .dot {
+  min-width: 7px; min-height: 7px; border-radius: 999px;
+  background: var(--fill-strong);
+  transition: min-width 260ms ease, background 260ms ease;
+}
+.dots .dot.current { min-width: 22px; background: var(--accent); }
+
+.check-ok { color: var(--green); }
+.check-bad { color: var(--red); }
+.check-warn { color: var(--orange); }
+
+.code-box {
+  background: var(--fill);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
