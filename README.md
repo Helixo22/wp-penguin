@@ -25,11 +25,11 @@ The actual rendering is done by the excellent open-source engine
 wp-penguin is the friendly frontend around it.
 
 <p align="center">
-  <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4">
+  <a href="https://cdn.jsdelivr.net/gh/Helixo22/wp-penguin@main/docs/media/wp-penguin-demo.mp4">
     <img src="docs/media/wp-penguin-demo.webp" alt="wp-penguin — product video" width="100%">
   </a>
   <br>
-  <sub>▶ <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4"><b>Watch the full video in HD</b></a> (MP4, 35 s) · the wallpapers shown are original demo artwork</sub>
+  <sub>▶ <a href="https://cdn.jsdelivr.net/gh/Helixo22/wp-penguin@main/docs/media/wp-penguin-demo.mp4"><b>Watch the full video in HD</b></a> (MP4, 35 s) · the wallpapers shown are original demo artwork</sub>
 </p>
 
 > [!NOTE]

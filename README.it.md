@@ -25,11 +25,11 @@ A disegnare i wallpaper è l'ottimo motore open source
 wp-penguin è l'interfaccia comoda che ci sta intorno.
 
 <p align="center">
-  <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4">
+  <a href="https://cdn.jsdelivr.net/gh/Helixo22/wp-penguin@main/docs/media/wp-penguin-demo.mp4">
     <img src="docs/media/wp-penguin-demo.webp" alt="wp-penguin — video di presentazione" width="100%">
   </a>
   <br>
-  <sub>▶ <a href="https://github.com/Helixo22/wp-penguin/raw/main/docs/media/wp-penguin-demo.mp4"><b>Guarda il video completo in HD</b></a> (MP4, 35 s) · i wallpaper mostrati sono grafiche dimostrative originali</sub>
+  <sub>▶ <a href="https://cdn.jsdelivr.net/gh/Helixo22/wp-penguin@main/docs/media/wp-penguin-demo.mp4"><b>Guarda il video completo in HD</b></a> (MP4, 35 s) · i wallpaper mostrati sono grafiche dimostrative originali</sub>
 </p>
 
 > [!NOTE]
